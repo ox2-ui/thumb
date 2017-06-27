@@ -1,0 +1,85 @@
+{
+  "name": "@ox2/thumb",
+  "version": "1.0.0",
+  "description": "Thumbnail react component.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ox2/thumb"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:babel && npm run build:copy-files",
+    "build-storybook": "build-storybook -s ./public",
+    "build:babel": "babel ./src --ignore *.story.js,*.test.js --out-dir ./build",
+    "build:copy-files": "babel-node ./scripts/copy-files.js",
+    "clean:build": "rimraf build",
+    "clean:docs": "rimraf docs",
+    "docs": "styleguidist server",
+    "docs:build": "npm run clean:docs && styleguidist build && npm run docs:copy-to-public",
+    "docs:copy-to-public": "bash ./scripts/copy_docs.sh",
+    "lint": "eslint src scripts; exit 0",
+    "prebuild": "npm run clean:build && npm run lint && npm run test",
+    "prettier": "prettier --print-width 60 --single-quote --trailing-comma all --write \"src/**/*.js\"",
+    "storybook": "start-storybook -p 55079 -s ./public",
+    "test": "jest",
+    "test:update": "yarn test -- -u"
+  },
+  "devDependencies": {
+    "@ox2/css-font-roboto": "^1.0.0",
+    "@ox2/css-font-roboto-condensed": "^3.0.0",
+    "@ox2/css-icons-linear": "^0.0.1",
+    "@ox2/iframe": "^1.0.0",
+    "@ox2/theming": "^2.0.2",
+    "@ox2/ycss": "^1.6.0",
+    "@storybook/addon-options": "^3.1.5",
+    "@storybook/react": "^3.1.5",
+    "@tapfuse/theme-spark": "^1.1.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-do-expressions": "^6.22.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.4",
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "eslint": "^4.1.0",
+    "eslint-config-prettier": "^2.2.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-react": "^7.1.0",
+    "fs-extra": "^3.0.1",
+    "jest-cli": "^20.0.4",
+    "prettier": "^1.4.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-styleguidist": "^5.4.8",
+    "react-test-renderer": "^15.6.1",
+    "rimraf": "^2.6.1",
+    "style-loader": "^0.18.2"
+  },
+  "main": "./index.js",
+  "engines": {
+    "npm": "^3.0.0"
+  },
+  "dependencies": {
+    "@ox2/icon": "^3.1.1",
+    "@ox2/image": "^1.0.0",
+    "prop-types": "^15.5.10"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
+  },
+  "jest": {
+    "roots": [
+      "./src"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
+}
